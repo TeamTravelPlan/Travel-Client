@@ -1,14 +1,18 @@
 import React from 'react';
 import './App.css';
 import NavBar from './components/navbar.js';
-import RecommendationCard from './components/RecommendationCard'
 import RecommendationGrid from './components/RecommendationGrid'
+import Cart from "./components/Cart";
+import CartItem from "./components/CartItem";
+import PlacePicker from "./components/PlacePicker";
 
 function App() {
     return (
         <div>
             <NavBar></NavBar>
-            <RecommendationGrid> </RecommendationGrid>
+            <PlacePicker></PlacePicker>
+            {/*<Cart></Cart>*/}
+            {/*<RecommendationGrid> </RecommendationGrid>*/}
         </div>
     );
 }
