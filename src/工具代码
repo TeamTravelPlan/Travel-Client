@@ -1,0 +1,276 @@
+//1. Delete
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Container extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {show: true};
+    }
+    delHeader = () => {
+        this.setState({show: false});
+    }
+    render() {
+        let myheader;
+        if (this.state.show) {
+            myheader = <Child />;
+        };
+        return (
+            <div>
+                {myheader}
+                <button type="button" onClick={this.delHeader}>Delete</button>
+            </div>
+        );
+    }
+}
+
+class Child extends React.Component {
+    componentWillUnmount() {
+        alert("This attraction is about to be deleted.");
+    }
+    render() {
+        return (
+            <h1>Trip 1: Empire state Building</h1>
+        );
+    }
+}
+
+ReactDOM.render(<Container />, document.getElementById('root'));
+
+//2. Type text
+import React from 'react';
+import ReactDOM from 'react-dom';
+  
+class MyForm extends React.Component {
+  render() {
+    return (
+      <form>
+        <h1>Hello</h1>
+        <p>Please enter your address about to start:</p>
+        <input
+          type="text"
+        />
+      </form>
+    );
+  }
+}
+ReactDOM.render(<MyForm />, document.getElementById('root'));
+
+//2.1 add on(可以即时更新用户刚刚输入的文字是什么)
+  constructor(props) {
+    super(props);
+    this.state = { username: '' };
+  }
+  myChangeHandler = (event) => {
+    this.setState({username: event.target.value});
+  }
+  render() {
+    return (
+      <form>
+      <h1>Hello {this.state.username}</h1>
+      <p>Enter your name:</p>
+      <input
+        type='text'
+        onChange={this.myChangeHandler}
+      />
+      </form>
+    );
+  }
+}
+
+//3.submit and have a alert notification
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { username: '' };
+  }
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+    alert("Your starting position is " + this.state.username);
+  }
+  myChangeHandler = (event) => {
+    this.setState({username: event.target.value});
+  }
+  render() {
+    return (
+      <form onSubmit={this.mySubmitHandler}>
+      <h1>Hello {this.state.username}</h1>
+      <p>Enter your name, and submit:</p>
+      <input
+        type='text'
+        onChange={this.myChangeHandler}
+      />
+      <input
+        type='submit'
+      />
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(<MyForm />, document.getElementById('root'));
+
+//4.可以输入用户当前的address 和finishing address（预留了一个submit button和后台交互，用户看不到任何提示）
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            address1: '',
+            address2: '',
+        };
+    }
+    mySubmitHandler = (event) => {
+        event.preventDefault();
+        let age = this.state.age;
+    }
+  
+    render() {
+        return (
+            <form onSubmit={this.mySubmitHandler}>
+                <h1>Hello {this.state.address1} {this.state.address2}</h1>
+                <p>
+                    <h3>Your Starting address:</h3>
+                </p>
+                <input
+                    type='text'
+                    name='address1'
+                    onChange={this.myChangeHandler}
+                />
+                <p>
+                    <h3>Your Finishing address:</h3>
+                </p>
+                <input
+                    type='text'
+                    name='address2'
+                    onChange={this.myChangeHandler}
+                />
+                <br/>
+                <br/>
+                <input type='submit' />
+            </form>
+        );
+    }
+}
+
+//5.各种民用车的下拉清单
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mycar: 'Volvo'
+        };
+    }
+    render() {
+        return (
+            <form>
+                <select value={this.state.mycar}>
+                    <option value="Ford">Ford</option>
+                    <option value="Volvo">Volvo</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Rolls-Royce">Rolls-Royce</option>
+                    <option value="Benz">Benz</option>
+                    <option value="Bugatte">Bugatte</option>
+                    <option value="Maserati">Maserati</option>
+                    <option value="RAM">RAM</option>
+                    <option value="Mclaren">Mclaren</option>
+                    <option value="Bentley">Bentely</option>  
+                    <option value="Lambogini">Lambogini</option>
+                </select>
+            </form>
+        );
+    }
+}
+
+ReactDOM.render(<MyForm />, document.getElementById('root'));
+
+//6.Inline style and backgroundColour.
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class MyHeader extends React.Component {
+  render() {
+    return (
+      <div>
+      //there exists two curly braces. 分别显示1
+      <h1 style={{color: "red"}}>Hello Style!</h1>
+      //background Color 分别显示2
+      <h1 style={{backgroundColor: "lightblue"}}>Hello Style!</h1>
+      //融合显示
+      <h1 style={{color: "red", backgroundColor: "lightblue"}}>Hello Style!</h1>
+      <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<MyHeader />, document.getElementById('root'));
+
+//6.1 当style成为一个体系的时候，我们可以新建一个文档App.css
+App.css
+body{
+    font-family: Calibri;
+    padding: 22px;
+    background-color: chartreuse;
+    text-align: center;
+}
+
+Index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+//这里注意导入
+import './App.css'; 
+
+
+class MyHeader extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>Minjia is a great emperor!</h1>
+                <p>Add a little style!</p>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<MyHeader />, document.getElementById('root'));
+
+//6.2 同样的我们也可以用modules来做
+//新建一个css文件 名字为mystyle.module
+.bigblue {
+  color: DodgerBlue;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+
+//新建一个App.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import styles from './mystyle.module.css'; 
+
+class Car extends React.Component {
+  render() {
+    return <h1 className={styles.bigblue}>Hello Car!</h1>;
+  }
+}
+
+export default Car;
+
+//index.js修改为
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Car from './App.js';
+
+ReactDOM.render(<Car />, document.getElementById('root'));
