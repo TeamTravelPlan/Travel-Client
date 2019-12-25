@@ -6,12 +6,25 @@ import Cart from './Cart'
 
 class PlacePicker extends React.Component {
     state = {
-        selectedItem: false,
-        selectedItemName: ''
-    }
+        selectedItems: [],
+    };
 
-    selectItem = (name) => {
-        this.setState({ selectedItem: true, selectedItemName: name});
+    selectItem = (selectedItem) => {
+        //this.setState({ selectedItem: true, selectedItemName: name});
+        //this.setState(prevState => ({selectedItems: [...prevState.selectedItems, selectedItem]}));
+        this.setState(prevState => {
+            if (!prevState.selectedItems.some((item) => {return selectedItem.name === item.name})) {
+                return {selectedItems: [...prevState.selectedItems, selectedItem]};
+            }
+        });
+    };
+
+    handleOnClickDelete = (indexToDelete) => {
+        this.setState((prevState) => {
+            return {
+                selectedItems: [...prevState.selectedItems.slice(0, indexToDelete), ...prevState.selectedItems.slice(indexToDelete + 1, prevState.selectedItems.length)]
+            };
+        });
     };
 
     render() {
@@ -23,7 +36,7 @@ class PlacePicker extends React.Component {
                 <RecommendationGrid selectItem = {this.selectItem}></RecommendationGrid>
             </Col>,
             <Col key={2} span={8}>
-                <Cart></Cart>
+                <Cart selectedItems = {this.state.selectedItems} deleteItem = {this.handleOnClickDelete}></Cart>
             </Col>
         )
 

@@ -6,7 +6,7 @@ const {Meta} = Card;
 
 class CartItem extends React.Component {
     render() {
-        const {placeName, imageUrl, rating} = this.props;
+        const {name, imageUrl, rating} = this.props;
         return (
             <div>
                 <Card
@@ -16,7 +16,7 @@ class CartItem extends React.Component {
                         avatar={
                             <Avatar src={imageUrl}/>
                         }
-                        title={placeName}
+                        title={name}
                         description={rating}
                     />
                 </Card>
