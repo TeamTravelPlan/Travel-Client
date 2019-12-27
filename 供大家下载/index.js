@@ -50,7 +50,7 @@ ReactDOM.render(
     </Layout>
       </div>
     </Content>
-    <Footer style={{ textAlign: 'center' }}>Will ©2019 </Footer>
+    <Footer style={{ textAlign: 'center' }}>Flag Camp Short-Trip planner ©2019 </Footer>
   </Layout>,
   document.getElementById('container'),
 );
