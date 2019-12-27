@@ -9,10 +9,10 @@ class Cart extends React.Component {
             title: 'Selected Place',
             dataIndex: 'placeItem',
             key: 'placeItem',
-            //align: 'center',
+            align: 'center',
             width: '50%',
             render: (placeInfo) => {
-                console.log(placeInfo);
+                //console.log(placeInfo);
                 return <CartItem name={placeInfo.name} imageUrl={placeInfo.imageUrl} rating={placeInfo.rating} placeId = {placeInfo.placeId}/>;},
         },
 
@@ -23,14 +23,15 @@ class Cart extends React.Component {
             align: 'center',
             width: '25%',
             render: (record) => {
-                console.log(record);
+                //console.log(record);
                 return <Slider
                     defaultValue={0}
                     max={10}
                     tooltipVisible
-                    onAfterChange={(value) => {
-                        //this.props.setStayTime(record.key, value);
+                    onChange={(value) => {
+                        this.props.setStayTime(record.key, value);
                     }}
+                    value={record.placeItem.stayTime}
                 />;
             },
         },
@@ -42,7 +43,7 @@ class Cart extends React.Component {
             align: 'center',
             width: '15%',
             render: (record) => {
-                console.log(record);
+                //console.log(record);
                 return <Button
                     type="primary"
                     icon="delete"
@@ -79,10 +80,10 @@ class Cart extends React.Component {
                     footer={() => (<Button
                         type="primary"
                         icon="shopping-cart"
-                        // onClick={(e) => {
-                        //     this.props.deleteItem(record.key);
-                        //     console.log(record);
-                        // }}
+                        onClick={(e) => {
+                            console.log(selectedItems);
+                            this.props.handleProceed(selectedItems);
+                        }}
                     >
                         Proceed
                     </Button>)}

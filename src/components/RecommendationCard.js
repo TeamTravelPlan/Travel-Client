@@ -7,11 +7,12 @@ const {Meta} = Card;
 // Handle props
 class RecommendationCard extends React.Component {
     handleOnClick = () => {
-        this.props.selectItem(this.props)
+        const {name, imageUrl, rating, placeId} = this.props;
+        this.props.selectItem({name:name, imageUrl: imageUrl, rating: rating, placeId:placeId, stayTime:0});
     };
 
     render() {
-        const {name, imageUrl, rating, placeId, stayTime} = this.props;
+        const {name, imageUrl, rating} = this.props;
         return (
             <Card
                 hoverable

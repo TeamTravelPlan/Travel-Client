@@ -6,15 +6,21 @@ import Cart from "./components/Cart";
 import CartItem from "./components/CartItem";
 import PlacePicker from "./components/PlacePicker";
 
-function App() {
-    return (
-        <div>
-            <NavBar></NavBar>
-            <PlacePicker></PlacePicker>
-            {/*<Cart></Cart>*/}
-            {/*<RecommendationGrid> </RecommendationGrid>*/}
-        </div>
-    );
+class App extends React.Component{
+    handleProceed = (selectedItems) => {
+        console.log(selectedItems);
+    };
+
+    render() {
+        return (
+            <div>
+                <NavBar></NavBar>
+                <PlacePicker handleProceed = {this.handleProceed}></PlacePicker>
+                {/*<Cart></Cart>*/}
+                {/*<RecommendationGrid> </RecommendationGrid>*/}
+            </div>
+        );
+    }
 }
 
 export default App;
