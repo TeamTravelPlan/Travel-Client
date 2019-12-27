@@ -6,11 +6,11 @@ const {Meta} = Card;
 
 class CartItem extends React.Component {
     render() {
-        const {name, imageUrl, rating} = this.props;
+        const {name, imageUrl, rating, placeId} = this.props;
         return (
             <div>
                 <Card
-                    style={{width: 350, marginTop: 6}}
+                    style={{width: '100%', marginTop: 6}}
                 >
                     <Meta
                         avatar={

@@ -9,14 +9,16 @@ class Cart extends React.Component {
             title: 'Selected Place',
             dataIndex: 'placeItem',
             key: 'placeItem',
+            //align: 'center',
             width: 50,
-            render: (placeInfo) => <CartItem name={placeInfo.name} imageUrl={placeInfo.imageUrl} rating={placeInfo.rating}/>,
+            render: (placeInfo) => <CartItem name={placeInfo.name} imageUrl={placeInfo.imageUrl} rating={placeInfo.rating} placeId = {placeInfo.placeId}/>,
         },
 
         {
             title: 'Remove Place',
             dataIndex: '',
             key: 'x',
+            align: 'center',
             width: 20,
             render: (record) => (
                 <Button
@@ -52,9 +54,20 @@ class Cart extends React.Component {
                 <Table
                     columns={this.columns}
                     title={() => 'Selected Places'}
+                    footer={() => (<Button
+                        type="primary"
+                        icon="shopping-cart"
+                        // onClick={(e) => {
+                        //     this.props.deleteItem(record.key);
+                        //     console.log(record);
+                        // }}
+                    >
+                        Proceed
+                    </Button>)}
                     dataSource={cartItemList}
                     pagination={false}
                     scroll={{ y: 750 }}
+
                 />
             </div>
         )

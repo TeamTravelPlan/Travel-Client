@@ -38,7 +38,7 @@ class RecommendationGrid extends React.Component {
             for (let j = 0; i < totalPlaces && j < nCols; i++, j++) {
                 cols.push(
                     <Col key={i} span={8}> <RecommendationCard name={this.state.places[i].name} rating={this.state.places[i].rating}
-                                                       imageUrl={this.state.places[i].imageUrl} selectItem = {selectItem}/>
+                                                       imageUrl={this.state.places[i].imageUrl} placeId = {this.state.places[i].placeId} selectItem = {selectItem}/>
                     </Col> // Add props
                 )
             }
