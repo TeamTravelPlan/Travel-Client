@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {Button, Col, Table} from 'antd';
+import {Button, Col, Table, Slider} from 'antd';
 import CartItem from "./CartItem";
 
 class Cart extends React.Component {
@@ -10,27 +10,49 @@ class Cart extends React.Component {
             dataIndex: 'placeItem',
             key: 'placeItem',
             //align: 'center',
-            width: 50,
-            render: (placeInfo) => <CartItem name={placeInfo.name} imageUrl={placeInfo.imageUrl} rating={placeInfo.rating} placeId = {placeInfo.placeId}/>,
+            width: '50%',
+            render: (placeInfo) => {
+                console.log(placeInfo);
+                return <CartItem name={placeInfo.name} imageUrl={placeInfo.imageUrl} rating={placeInfo.rating} placeId = {placeInfo.placeId}/>;},
         },
 
         {
-            title: 'Remove Place',
+            title: 'Stay Time (Hours)',
+            dataIndex: '',
+            key: 'y',
+            align: 'center',
+            width: '25%',
+            render: (record) => {
+                console.log(record);
+                return <Slider
+                    defaultValue={0}
+                    max={10}
+                    tooltipVisible
+                    onAfterChange={(value) => {
+                        //this.props.setStayTime(record.key, value);
+                    }}
+                />;
+            },
+        },
+
+        {
+            title: 'Delete',
             dataIndex: '',
             key: 'x',
             align: 'center',
-            width: 20,
-            render: (record) => (
-                <Button
+            width: '15%',
+            render: (record) => {
+                console.log(record);
+                return <Button
                     type="primary"
                     icon="delete"
                     onClick={(e) => {
                         this.props.deleteItem(record.key);
-                        console.log(record);
+                        //console.log(record);
                     }}
                 >
-                Delete
-                </Button>),
+
+                </Button>;},
         }
     ];
 

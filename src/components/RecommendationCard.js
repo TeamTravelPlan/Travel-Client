@@ -11,7 +11,7 @@ class RecommendationCard extends React.Component {
     };
 
     render() {
-        const {name, imageUrl, rating, placeId} = this.props;
+        const {name, imageUrl, rating, placeId, stayTime} = this.props;
         return (
             <Card
                 hoverable

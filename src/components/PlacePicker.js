@@ -27,6 +27,14 @@ class PlacePicker extends React.Component {
         });
     };
 
+    setSelectedItemStayTime = (key, stayTime) => {
+        this.setState(prevState => {
+            let newState = prevState;
+            newState.selectedItems[key].stayTime = stayTime;
+            return newState;
+        })
+    };
+
     render() {
         console.log(this.state);
         const rows = [];
@@ -36,7 +44,7 @@ class PlacePicker extends React.Component {
                 <RecommendationGrid selectItem = {this.selectItem}></RecommendationGrid>
             </Col>,
             <Col key={2} span={8}>
-                <Cart selectedItems = {this.state.selectedItems} deleteItem = {this.handleOnClickDelete}></Cart>
+                <Cart selectedItems = {this.state.selectedItems} deleteItem = {this.handleOnClickDelete} setStayTime = {this.setSelectedItemStayTime}></Cart>
             </Col>
         )
 
