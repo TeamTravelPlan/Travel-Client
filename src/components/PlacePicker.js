@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import {Col} from 'antd';
+import { Col } from 'antd';
 import RecommendationGrid from './RecommendationGrid'
 import Cart from './Cart'
 
@@ -10,8 +10,6 @@ class PlacePicker extends React.Component {
     };
 
     selectItem = (selectedItem) => {
-        //this.setState({ selectedItem: true, selectedItemName: name});
-        //this.setState(prevState => ({selectedItems: [...prevState.selectedItems, selectedItem]}));
         this.setState(prevState => {
             if (!prevState.selectedItems.some((item) => {return selectedItem.name === item.name})) {
                 return {selectedItems: [...prevState.selectedItems, selectedItem]};
@@ -41,12 +39,17 @@ class PlacePicker extends React.Component {
 
         rows.push(
             <Col key={1} span={16}>
-                <RecommendationGrid selectItem = {this.selectItem}></RecommendationGrid>
+                <RecommendationGrid selectItem = {this.selectItem} />
             </Col>,
             <Col key={2} span={8}>
-                <Cart selectedItems = {this.state.selectedItems} deleteItem = {this.handleOnClickDelete} setStayTime = {this.setSelectedItemStayTime} handleProceed = {this.props.handleProceed}></Cart>
+                <Cart
+                    selectedItems={this.state.selectedItems}
+                    deleteItem={this.handleOnClickDelete}
+                    setStayTime={this.setSelectedItemStayTime}
+                    handleProceed={this.props.handleProceed}
+                />
             </Col>
-        )
+        );
 
         return (
             <div>{rows}</div>

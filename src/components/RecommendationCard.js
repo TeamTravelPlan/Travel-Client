@@ -1,18 +1,18 @@
-import { Card, Icon, Button} from 'antd';
+import { Card, Button } from 'antd';
 import React from 'react';
 import 'antd/dist/antd.css';
 
-const {Meta} = Card;
+const { Meta } = Card;
 
 // Handle props
 class RecommendationCard extends React.Component {
     handleOnClick = () => {
-        const {name, imageUrl, rating, placeId} = this.props;
-        this.props.selectItem({name:name, imageUrl: imageUrl, rating: rating, placeId:placeId, stayTime:0});
+        const { name, imageUrl, rating, placeId } = this.props;
+        this.props.selectItem({name, imageUrl, rating, placeId:placeId, stayTime: 0});
     };
 
     render() {
-        const {name, imageUrl, rating} = this.props;
+        const { name, imageUrl, rating } = this.props;
         return (
             <Card
                 hoverable
@@ -26,11 +26,11 @@ class RecommendationCard extends React.Component {
                         Add
                     </Button>
                 ]}
-                cover={<img alt="place" src={imageUrl}/>}
+                cover={<img alt="place" src={imageUrl} height={185}/>}
             >
                 <Meta
                     title={name}
-                    description={rating}
+                    description={"Rating: " + rating}
                 />
             </Card>
         );

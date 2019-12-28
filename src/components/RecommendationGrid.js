@@ -1,4 +1,4 @@
-import {Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 import React from 'react';
 import 'antd/dist/antd.css';
 import RecommendationCard from './RecommendationCard'
@@ -29,7 +29,7 @@ class RecommendationGrid extends React.Component {
     }
 
     render() {
-        const {selectItem} = this.props;
+        const { selectItem } = this.props;
         const totalPlaces = this.state.places.length;
         const nCols = 3;
         const rows = [];
@@ -37,8 +37,14 @@ class RecommendationGrid extends React.Component {
             const cols = [];
             for (let j = 0; i < totalPlaces && j < nCols; i++, j++) {
                 cols.push(
-                    <Col key={i} span={8}> <RecommendationCard name={this.state.places[i].name} rating={this.state.places[i].rating}
-                                                       imageUrl={this.state.places[i].imageUrl} placeId = {this.state.places[i].placeId} selectItem = {selectItem}/>
+                    <Col key={i} span={8}>
+                        <RecommendationCard
+                            name={this.state.places[i].name}
+                            rating={this.state.places[i].rating}
+                            imageUrl={this.state.places[i].imageUrl}
+                            placeId={this.state.places[i].placeId}
+                            selectItem={selectItem}
+                        />
                     </Col> // Add props
                 )
             }
@@ -46,7 +52,6 @@ class RecommendationGrid extends React.Component {
                 <Row key={i}>{cols}</Row>
             )
         }
-
 
         return (
             <div>{rows}</div>
